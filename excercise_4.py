@@ -6,34 +6,25 @@ import time
 def on_message(message, data):
     try:
         if message:
-            print("[*] Received data: {0}".format(message["payload"]))
+            print(type(message))
+            print(message)
+            print(type(data))
+            print(data)
     except Exception as e:
         print(message)
-        
+        print(e)
 
 
 def run_frida_script():
     frida_script_code = """
-    
 
-    Java.perform(function x()
-    {
-    var targetcalss = Java.use("hsbc.rick.frida_practice.FirstActivity");
-
-    Java.choose(targetcalss, {
-        onMatch: function(instance) { 
-            console.log("Found instance: " + instance);
-            console.log("Result of secret func: " + instance.secret());
-    },
-        onComplete: function() {}
-
-    });
-    });
+        send(168168);
         
         
 
 
         """
+
     print('[*] Executing frida code:\n')
     return frida_script_code
 
